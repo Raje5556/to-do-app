@@ -11,12 +11,16 @@ function AddTodo({ onNewItem }) {
   const handleDateChange = (event) => {
     setDueDate(event.target.value);
   };
+const handleAddButtonClicked = () => {
+  if (!todoName.trim() || !dueDate.trim()) {
+    alert("Please enter both name and due date!");
+    return; // stop execution if empty
+  }
 
-  const handleAddButtonClicked = () => {
-    onNewItem(todoName, dueDate);
-    setDueDate("");
-    setTodoName("");
-  };
+  onNewItem(todoName, dueDate);
+  setTodoName("");
+  setDueDate("");
+};
 
   return (
     <div className="container text-center">
